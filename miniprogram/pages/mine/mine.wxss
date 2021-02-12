@@ -1,0 +1,8 @@
+
+.hdIcon{
+  width: 100%;height: 200rpx;background: royalblue;
+  display: flex;align-items: center;padding:0 26rpx;
+}
+.icon image{
+  width: 30rpx;height: 30rpx;position: relative;top: 4rpx;
+}

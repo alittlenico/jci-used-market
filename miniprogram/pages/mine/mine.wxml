@@ -1,0 +1,48 @@
+<view class="conContainer">
+  <view class="hdIcon"> 
+    <image src="/images/pf_pic1.jpg"style="height:150rpx;border-radius:75rpx;width:150rpx;"/>
+    <view style="margin-left:50rpx;font-size:50rpx;color:#fff">点击登录/注册</view>
+  </view>
+  <view>
+    <van-grid column-num="3" border="{{ false }}">
+      <van-grid-item use-slot  wx:for-item="index">
+        <image
+          style="width:50rpx;height:50rpx;"
+          src="/images/subscribe.png"/>
+        <view>订单</view>
+      </van-grid-item>
+      <van-grid-item use-slot  wx:for-item="index">
+        <image
+          style="width:50rpx;height:50rpx;"
+          src="/images/collect.png"/>
+        <view>收藏</view>
+      </van-grid-item>
+      <van-grid-item use-slot  wx:for-item="index">
+        <image
+          style="width:50rpx;height:50rpx;"
+          src="/images/look.png"/>
+        <view>浏览</view>
+      </van-grid-item>
+    </van-grid>
+  </view>  
+  <view style="margin-top:30rpx;">
+    <van-cell is-link title="收货地址管理" link-type="navigateTo" url="">
+      <view slot="icon" class="icon"><image src="/images/add_icon.png"/></view>
+    </van-cell>
+    <van-cell is-link title="我的交易" link-type="navigateTo" url="">
+      <view slot="icon" class="icon"><image src="/images/交易.png"/></view>
+    </van-cell>
+    <van-cell is-link title="我的发布" link-type="navigateTo" url="">
+      <view slot="icon" class="icon"><image src="/images/发布.png"/></view>
+    </van-cell>
+  </view>
+  <view style="margin-top:30rpx;">
+    <van-cell is-link title="已买到的好货" link-type="navigateTo" url="">
+      <view slot="icon" class="icon"><image src="/images/商品.png"/></view>
+    </van-cell>
+    <van-cell is-link title="关于" link-type="navigateTo" url="">
+      <view slot="icon" class="icon"><image src="/images/关于.png"/></view>
+    </van-cell>    
+  </view>
+</view>
+

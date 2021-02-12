@@ -1,0 +1,29 @@
+<van-skeleton title avatar row="3" loading="{{isLoadData }}">
+  <view class="conContainer">
+  <view class="info">
+    <image src="{{userIcon}}" mode="heightFix"/>
+    <view class="txt">
+      <view>{{nickname}}</view>
+      <view style="font-size:18rpx;color:rgb(151, 139, 139)">{{createTime}}发布</view>
+    </view>
+  </view>
+  <view class="detail">
+    <view style="font-size:42rpx;color:red;margin:15rpx 0">￥{{price}}</view>
+    <view>联系方式:{{contact}}</view>
+    <view>交易地址:{{address}}</view>
+    <view>{{title}}</view>
+    <view>{{des}}</view>
+    <image wx:for="{{imgArr}}" src="{{item}}" mode="widthFix"/>
+    <view class="liulan">浏览{{hits}}</view>
+  </view>
+  <view class="buyBottom">
+    <view class="bbLeft"> 
+      <image src="/images/collect.png" mode="heightFix"/>
+      <viwe>收藏</viwe>
+    </view>
+    <view class="bbRight">
+    <button type="primary">购买</button></view>
+  </view>
+</view> 
+</van-skeleton>
+

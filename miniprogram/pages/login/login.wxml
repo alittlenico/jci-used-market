@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 进行授权 </button>
+    <navigator open-type="switchTab" style="margin:60rpx auto;text-align:center" url="../../pages/index/index">进入小程序</navigator>
+  </view>
+</view>
+

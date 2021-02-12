@@ -1,0 +1,37 @@
+.conContainer{
+  padding:20rpx 15rpx;background:#fff;width: 100%;
+}
+.detail{
+  margin-bottom: 120rpx;
+}
+.detail image{
+  width: 100%;
+}
+.detail .liulan{
+  border-top:1px solid rgba(27, 26, 26, 0.4);
+  padding-top: 15rpx;
+}
+.info{
+  height: 120rpx;width: 100%;display: flex;border-bottom:1rpx solid rgb(151, 139, 139);padding-bottom: 30rpx;
+}
+.info image{
+  height: 100%;border-radius: 15rpx;
+}
+.info .txt{
+  padding:5rpx 20rpx 0;display: flex;justify-content: space-between;flex-direction: column;
+}
+
+.buyBottom{
+  position: fixed;box-sizing: border-box;display: flex;justify-content: space-between;
+  bottom: 0rpx;width: 710rpx;height: 90rpx;
+  background: #fff;align-items: center;
+}
+.buyBottom .bbLeft{
+  display: flex;flex-direction: column;
+}
+.buyBottom image{
+  height: 50rpx;
+}
+.buyBottom .bbRight button{
+  height: 70rpx;border-radius: 35rpx;
+}

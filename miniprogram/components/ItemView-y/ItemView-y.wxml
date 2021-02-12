@@ -1,0 +1,20 @@
+<!-- 上面图片下面文字的布局 -->
+<navigator class="swItem" url="{{navUrl}}" >
+  <view class="pic">
+    <image src="{{gdImgUrl}}" mode="widthFix"/>
+  </view>
+  <view class="txt">
+    <view class="tit">{{gdTitle}}-{{item_id}}
+    </view>
+    <view class="des">
+      <view class="peo_info">
+        <image src="{{userIconUrl}}" class="pro_pic" ></image>
+        <view class="type">{{userNickname}}</view> 
+      </view>
+      <view class="pic" >
+        <image src="/images/yuan.png" mode="widthFix"/>
+        <text space="ensp"> {{gdPrice}}</text>
+      </view>
+    </view>
+  </view>
+</navigator>

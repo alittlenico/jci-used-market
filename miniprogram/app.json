@@ -1,0 +1,37 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/release/release",
+    "pages/goods/goods",
+    "pages/msg/msg",
+    "pages/mine/mine",
+    "pages/login/login",
+    "pages/logs/logs"
+  ],
+  "tabBar": {
+    "list":[
+      {"pagePath": "pages/index/index","text": "首页","iconPath": "images/home.png","selectedIconPath": "images/home_s.png"},
+      {"pagePath": "pages/release/release","text": "发布","iconPath": "images/pub.png","selectedIconPath": "images/pub_s.png"},
+      {"pagePath": "pages/msg/msg","text": "消息","iconPath": "images/msg.png","selectedIconPath": "images/msg_s.png"},
+      {"pagePath": "pages/mine/mine","text": "我的","iconPath": "images/mine.png","selectedIconPath": "images/mine_s.png"}
+    ],
+    "color": "#120909",
+    "selectedColor": "#d81e06",
+    "backgroundColor": "#dccccc"
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "陶大二手市场",
+    "navigationBarTextStyle":"black"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "van-grid": "/components/vant-weapp/grid/index",
+    "van-grid-item": "/components/vant-weapp/grid-item/index",
+    "van-cell": "/components/vant-weapp/cell/index",
+    "van-cell-group": "/components/vant-weapp/cell-group/index"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
