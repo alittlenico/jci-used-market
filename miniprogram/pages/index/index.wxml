@@ -1,59 +1,45 @@
-<!--搜索框-->
-<view>
-     <view>
-        <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-            <!-- 最初始时的搜索框 -->
-                <view class="weui-search-bar__box">
-                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" placeholder="搜索"
-                    name="search" 
-                    bindconfirm='searchGoods' confirm-type='search'/>
-                </view>
-                <!-- 可编辑时的搜索框 -->
-                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-                    <icon class="weui-icon-search" type="search" size="14"></icon>
-                    <view class="weui-search-bar__text">搜索</view>
-                </label>
-            </view>
-            <!-- 取消搜索 -->
-            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
-        </view>
-    </view>
-</view>
-<view class="banner">
-  <!-- interval="3000" autoplay -->
-  <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)"
-  indicator-active-color="#FF0000"  circular>
-    <swiper-item><image src="/images/goods1.png"/></swiper-item>
-    <swiper-item><image src="/images/goods2.png"/></swiper-item>
-    <swiper-item><image src="/images/goods3.png"/></swiper-item>
-  </swiper>
-</view>
-<view>
-  <scroll-view scroll-x class="top">
-    <view wx:for="{{topType}}" wx:for-index="i" data-idx="{{i}}" class="{{activeIdx===i?'active':''}}" bindtap="switchTop">
-      <view class="box">
-        <image src="{{activeIdx===i?item.iconUrl_s:item.iconUrl}}" class="pic" mode="widthFix"/>
-        <view class="txt">{{item.tyName}}</view> 
-      </view> 
+<view class="header">
+  <van-search value="{{ value }}" placeholder="请输入搜索关键词" show-action
+  bind:search="onSearch"
+  bind:cancel="onCancel"
+  background="#165dad"
+  input-align="center"
+  shape="round"
+  cancel-class="cancel-class"
+  />
+  <scroll-view scroll-x class="type-tab">
+    <view wx:for="{{topType}}" wx:for-index="i" wx:key="index" data-idx="{{i}}" class="{{activeIdx===i?'active':''}}" bindtap="switchTab">
+      {{item.tyName}}
     </view>
   </scroll-view>
-  <view wx:if="{{activeIdx===0}}">
-    <view class="ItemCon">  
-      <!--   -->
-      <ItemView-y wx:for="{{hotGoods}}" gdImgUrl="{{item.gd_imgArr[0]}}"
-      gdTitle="{{item.gd_title}}" 
-      gdPrice="{{item.gd_price}}" 
-      userIconUrl="{{item.userInfo[0].user_icon}}"
-      userNickname="{{item.userInfo[0].user_nickname}}"
-      navUrl="../../pages/goods/goods?gdId={{item._id}}"
-      ></ItemView-y>
+</view>
+<view class="content">  
+  <view class="banner">
+    <swiper indicator-dots="{{swiperOptions.indicatorDots}}" indicator-color="{{swiperOptions.indicatorColor}}" indicator-active-color="{{swiperOptions.indicatorActiveColor}}" autoplay="{{swiperOptions.autoplay}}" interval="{{swiperOptions.interval}}" circular="{{swiperOptions.circular}}">
+    <swiper-item wx:for="{{bannerData}}" wx:key="index"><image src="{{item.imgUrl}}"/></swiper-item>
+    </swiper>
+  </view>
+  <view class="goods">
+    <view class="box" wx:for="{{8}}">
+      <image src="cloud://miniapp-nico-5gfu2agi3ab5e320.6d69-miniapp-nico-5gfu2agi3ab5e320-1304805989/jci-used-market/goods/00a97f23-f616-4318-97c4-44f974b53c92.jpg" mode="widthFix"/>
+      <view class="title">
+        这是标题这是标题这是标题这是标题这是标题
+        这是标题这是标题这是标题这是标题这是标题
+      </view>
+      <view class="detail">
+        <view>
+          <image src="cloud://miniapp-nico-5gfu2agi3ab5e320.6d69-miniapp-nico-5gfu2agi3ab5e320-1304805989/jci-used-market/user-icon/user1.jpg"/>
+        <text style="font-size:25rpx;color:#165dad;margin-left:15rpx;position:relative;bottom:15rpx">李建刚</text>
+        </view>
+        <view>
+          <text space="ensp" style="color:#165dad;font-size:24rpx">￥ 188</text>
+        </view>
+      </view>
     </view>
   </view>
-  <view wx:if="{{activeIdx===1}}"></view>
-  <view wx:if="{{activeIdx===2}}"></view>
-  <view wx:if="{{activeIdx===3}}"></view>
-  <view wx:if="{{activeIdx===4}}"></view>
+  
 </view>
+
+
+  
 

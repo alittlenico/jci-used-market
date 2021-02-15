@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "ItemView-y":"/components/ItemView-y/ItemView-y"
-  }
+    "ItemView-y":"/components/ItemView-y/ItemView-y",
+    "van-search": "../../components/vant-weapp/search/index"
+  },
+  "onReachBottomDistance":50
 }

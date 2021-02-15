@@ -2,9 +2,121 @@
 const app = getApp()
 Page({
 
-  
-  switchTop:function(e){
+  // 页面的初始数据
+  data: {
+    //类别框
+    activeIdx:0,//当前选中tab的下标
+    comGoods:[],//其他类别数据
+    hotGoods:[],//推荐数据
+    topType:[{
+      tyName:"推荐",iconUrl:"/images/type0.png",iconUrl_s:"/images/type0_s.png"},
+      {tyName:"学习",iconUrl:"/images/type1.png",iconUrl_s:"/images/type1_s.png"},
+      {tyName:"运动",iconUrl:"/images/type2.png",iconUrl_s:"/images/type2_s.png"},
+      {tyName:"生活",iconUrl:"/images/type3.png",iconUrl_s:"/images/type3_s.png"},
+      {tyName:"智能",iconUrl:"/images/type4.png",iconUrl_s:"/images/type4_s.png"}],
+    bannerData:[
+      {
+        imgUrl:'cloud://miniapp-nico-5gfu2agi3ab5e320.6d69-miniapp-nico-5gfu2agi3ab5e320-1304805989/jci-used-market/banner/1.jpg'
+      },
+      {
+        imgUrl:'cloud://miniapp-nico-5gfu2agi3ab5e320.6d69-miniapp-nico-5gfu2agi3ab5e320-1304805989/jci-used-market/banner/2.jpg'
+      },
+      {
+        imgUrl:'cloud://miniapp-nico-5gfu2agi3ab5e320.6d69-miniapp-nico-5gfu2agi3ab5e320-1304805989/jci-used-market/banner/3.jpg'
+      }
+    ],
+    //轮播图配置
+    swiperOptions: {
+      //显示面板指示点
+      indicatorDots: true,
+
+      //未选中指示点颜色
+      indicatorColor: '#fff',
+
+      //选中指示点颜色
+      indicatorActiveColor: '#165dad',
+
+      //开启自动轮播
+      autoplay: true,
+
+      //每隔一定时间切换一张图片, 单位为：ms
+      interval: 3000,
+
+      //衔接滑动
+      circular: true
+
+    }
+  },
+  onLoad: function (options) {
+    // console.log("userID:"+app.globalData.userID)
+    this.getHotGoods()
+  },
+  onSearch(e){
+    console.log("value =>",e.detail)
+  },
+  onReachBottom(){
+    console.log("触底")
+    if(this.data.activeIdx==0){//推荐被选中 加载hotGoods
+      this.getHotGoods(8,this.data.hotGoods.length)
+    }else{//其他tab被选中 加载comGoods
+      this.getGoodsByType()
+    }
+  },
+  getHotGoods(num=8,page=0){
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.cloud.callFunction({
+      name:"j_getHotsGoods",
+      data:{
+        num:num,
+        page:page
+      },
+      success:res=>{
+        wx.hideLoading()
+        var oldData = this.data.hotGoods
+        var newData = [...oldData,...res.result.list]
+        console.log(this.data.hotGoods)
+        this.setData({
+            hotGoods:newData
+        })
+      },
+      fail:err=>{
+        wx.hideLoading()
+        console.log("err =>",err)
+      }
+    })
+  },
+  getGoodsByType(type,page=0,num=8){
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.cloud.callFunction({
+      name:"j_getGoodsByType",
+      data:{
+        type:type,
+        page:page,
+        num:num
+      },
+      success:res=>{
+        wx.hideLoading()
+        console.log("res =>",res)
+        this.setData({
+          comGoods:res.result.data
+        })
+      },
+      fail:err=>{
+        wx.hideLoading()
+        console.log("err =>",err)
+      }
+    })    
+  },
+  switchTab:function(e){
     let activeIdx = e.currentTarget.dataset.idx
+    // 如果当前选中，则不做任何操作
+    if(activeIdx==this.data.activeIdx){
+      return
+    }
     this.setData({
       activeIdx
     })
@@ -26,117 +138,11 @@ Page({
       default:
         console.log("为0加载全局数据")
     }
-    
-  },
-  // 使文本框进入可编辑状态
-  showInput: function () {
-    this.setData({
-      inputShowed: true   //设置文本框可以输入内容
-    });
-  },
-  // 取消搜索
-  hideInput: function () {
-    this.setData({
-      inputShowed: false
-    });
-  },
-  searchGoods:function(){
-    console.log("search触发")
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  
-  getGoodsData(){
-
-  },
-  // 页面的初始数据
-  data: {
-    inputShowed: false,  //初始文本框不显示内容
-    //类别框
-    activeIdx:0,
-    goodList:[],
-    hotGoods:app.globalData.hotsGoods,
-    topType:[{
-      tyName:"推荐",iconUrl:"/images/type0.png",iconUrl_s:"/images/type0_s.png"},
-      {tyName:"学习",iconUrl:"/images/type1.png",iconUrl_s:"/images/type1_s.png"},
-      {tyName:"运动",iconUrl:"/images/type2.png",iconUrl_s:"/images/type2_s.png"},
-      {tyName:"生活",iconUrl:"/images/type3.png",iconUrl_s:"/images/type3_s.png"},
-      {tyName:"智能",iconUrl:"/images/type4.png",iconUrl_s:"/images/type4_s.png"}]
-  },
-
-  getHotsGoods(){
-    wx.cloud.callFunction({
-      name:"getHotsGoods"
-    }).then(res=>{
-      console.log(321)
-      console.log(res)
-    }).catch(err=>{
-
-    })
-  },
-  onLoad: function (options) {
-    console.log("userID:"+app.globalData.userID)
-    wx.cloud.callFunction({
-      name:"getHotsGoods"
-    }).then(res=>{
-      console.log(res.result)
-      app.globalData.hotsGoods=res.result.list
-      this.setData({
-        hotGoods:app.globalData.hotsGoods
-      })
-    }).catch(err=>{
-
-    })
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    console.log("上拉触底")   
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+    if(gd_type.length==0){
+      this.getHotGoods()
+    }else{
+      this.getGoodsByType(gd_type)
+    }
     
   }
 })

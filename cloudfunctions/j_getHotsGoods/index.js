@@ -9,17 +9,19 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  //返回promise 由小程序来处理数据 
-  return db.collection('goods').aggregate()
+  // num 一次加载的数据数
+  // page 跳过的数据数，用于触底刷新
+  return await db.collection('j_goods').aggregate()
   .lookup({
-    from: 'user',      
-    localField: 'user_id',   
-    foreignField: 'user_id',  
-    as: 'userInfo'     
+    from: 'j_user',      
+    localField: 'userInfo',   
+    foreignField: 'userInfo',  
+    as: 'user'     
   })
+  .skip(event.page)
   .sort({
     hits:-1 //按点击数降序排列
   })  
-  .limit(8)
+  .limit(event.num)
   .end()
 }

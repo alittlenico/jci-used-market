@@ -1,72 +1,12 @@
-.weui-search-bar {
-  position: relative;
-  padding: 8px 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  box-sizing: border-box;
-  background-color: #EFEFF4;
-  border-top: 1rpx solid #D7D6DC;
-  border-bottom: 1rpx solid #D7D6DC;
-}
-.weui-icon-search {
-  margin-right: 4px;
-  font-size: inherit;
-}
-.weui-icon-search_in-box {
-  position: absolute;
-  left: 10px;
-  top: 7px;
-}
-.weui-search-bar__text {
-  display: inline-block;
-  font-size: 16px;
-}
-.weui-search-bar__form {
-  position: relative;
-  -webkit-box-flex: 1;
-  -webkit-flex: auto;
-          flex: auto;
-  border-radius: 5px;
-  background: #FFFFFF;
-  border: 1rpx solid #E6E6EA;
-}
-.weui-search-bar__box {
-  position: relative;
-  padding-left: 30px;
-  padding-right: 30px;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 1;
-}
-.weui-search-bar__input {
-  height: 28px;
-  line-height: 28px;
-  font-size: 14px;
-}
-.weui-search-bar__label {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  border-radius: 3px;
-  text-align: center;
-  color: #9B9B9B;
-  background: #FFFFFF;
-  line-height: 28px;
-}
-.weui-search-bar__cancel-btn {
-  margin-left: 10px;
-  line-height: 28px;
-  color: #09BB07;
-  white-space: nowrap;
-}
+/* header */
 
+/* 搜索框取消按钮 */
+.cancel-class{
+  color:#fff
+}
 /* 轮播图 */
 .banner{
-  width: 100%;height: 295rpx;
+  width: 100%;height: 295rpx;margin-top: 20rpx;
 }
 .banner swiper{
   width: 100%;height: 100%;
@@ -76,30 +16,54 @@
 }
 
 /* 类别 */
-.top{
-  white-space: nowrap;height: 150rpx;background: rgba(136, 131, 131, 0.1);
+.type-tab{
+  white-space: nowrap;height: 75rpx;background:#fff;
 }
-.top view{
+.type-tab view{
   display:inline-block; text-align: center;width: 165rpx;height: 100%;
-  box-sizing: border-box;padding-top:15rpx
+  box-sizing: border-box;line-height: 75rpx;
 }
-.top view.active{
-  border-bottom: 1px solid #eb0909;
+.type-tab view.active{
+  border-bottom: 1px solid #165dad;
 }
-.top .box{
-  display: flex;flex-direction: column;align-items: center;
-}
-
-.top .pic{
-  width: 100rpx;
-}
-.top .txt{
-  font-size: 26rpx;
-  margin-top: 8rpx;
+.content{
+  width: 100%;height: calc(100% - 182rpx);
+  position: fixed;overflow-y: auto;
 }
 
-.ItemCon{
-  width: 750rpx;box-sizing: border-box;padding: 30rpx 10rpx;
-  display: flex;justify-content: space-between;flex-wrap: wrap; 
-  background: rgba(0, 0, 0, 0.1);
+
+/* 商品展示区域 */
+.goods{
+  width: 100%;display: flex;flex-wrap: wrap;justify-content: space-between;
+  padding:0rpx 10rpx;box-sizing: border-box;margin-top:30rpx;
 }
+.goods .box{
+  background: #fefefe;
+  width: 358rpx;height: 500rpx;
+  margin-bottom:20rpx;
+}
+.box image{
+  width: 358rpx;
+}
+.box image,.box{
+  border-radius: 25rpx;
+}
+.title{
+  height: 76rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+.box .detail{
+  margin-top: 5rpx;
+  height: 50rpx;line-height: 50rpx;display: flex;justify-content: space-between;
+}
+.box .detail image{
+  width: 50rpx;height: 100%;border-radius: 50rpx;
+}
+
+
+
