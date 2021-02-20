@@ -2354,14 +2354,14 @@ button.icon.lg {
          表单
  ==================== */
 
-.cu-form-group {
-	background-color: var(--white);
-	padding: 1rpx 30rpx;
-	display: flex;
-	align-items: center;
-	min-height: 100rpx;
-	justify-content: space-between;
-}
+	.cu-form-group {
+		background-color: var(--white);
+		padding: 1rpx 30rpx;
+		display: flex;
+		align-items: center;
+		min-height: 100rpx;
+		justify-content: space-between;
+	}
 
 .cu-form-group+.cu-form-group {
 	border-top: 1rpx solid #eee;
@@ -3463,7 +3463,7 @@ scroll-view.cu-steps .cu-item {
 }
 
 .bg-blue {
-	background-color: var(--blue);
+	background-color: #165dad;
 	color: var(--white);
 }
 

@@ -1,14 +1,14 @@
 
 
 <!--闲置表单-->
-<form bindsubmit="goodFormSubmit">
+<view>
   <view class="cu-form-group margin-top">
     <view class="title">标题</view>
-    <textarea auto-height name="gd_title"  placeholder="必填 （商品名称品牌，最多30字）" maxlength="50"></textarea>
+    <textarea auto-height name="gd_title"  placeholder="必填 （商品名称品牌，最多30字）" maxlength="50" value="{{good.title}}" bindblur="modifyTitle"></textarea>
   </view>
   <view class="cu-form-group">
     <view class="title">描述</view>
-    <textarea auto-height name="gd_des"  placeholder="选填 （描述宝贝的用途，转手原因等）" maxlength="100"></textarea>
+    <textarea auto-height name="gd_des"  placeholder="选填 （描述宝贝的用途，转手原因等）" maxlength="100" value="{{good.des}}" bindblur="modifyDes"></textarea>
   </view>
   <view class="cu-form-group">
     <view class="title">类别</view>
@@ -43,23 +43,23 @@
  
   <view class="cu-form-group margin-top">
     <view class="title">价格</view>
-    <input placeholder="必填" class='text-red' name="gd_price" type='number' maxlength="5"></input>
-    <text class="text-red">元</text>
+    <input placeholder="必填" class='text-red' name="gd_price" type='number' maxlength="5" value="{{good.price}}" bindchange="modifyPrice"></input>
+    <text class="text-red" style="color:#165dad">元</text>
   </view>
 
   <view class="cu-form-group align-start margin-top">
     <view class="title">交易地址</view>
-     <textarea auto-height name="gd_address"  placeholder="选填（如：中心广场大屏幕下）" maxlength="50"></textarea>
+     <textarea auto-height name="gd_address"  placeholder="选填（如：中心广场大屏幕下）" maxlength="50" value="{{good.address}}" bindblur="modifyAddress"></textarea>
   </view>
   <view class="cu-form-group">
     <view class="title">联系方式</view>
-    <input placeholder="必填 (如: 手机:152xxxx2753)"  name="gd_contact" ></input>
+    <input placeholder="必填 (如: 手机:152xxxx2753)" bindchange="modifyPhone" name="gd_contact" value="{{good.contact}}" maxlength="11"></input>
   </view>
   <view class="padding flex justify-center">
-    <button class="cu-btn round bg-blue  margin-sm" style='width:400rpx' form-type="submit" disabled="{{btn_disabled}}">{{btn_disabled?'发布中':'发布'}}</button>
+    <button bindtap="pubGood" class="cu-btn round bg-blue  margin-sm" style='width:400rpx' style="color:#fff;" disabled="{{btn_disabled}}">{{btn_disabled?'发布中':'发布'}}</button>
   </view>
  
-</form>
+</view>
 <!--发布成功-->
 <view class='cu-load load-modal' wx:if="{{release_sucess}}">
   <view class='cuIcon-emojifill text-blue'></view>

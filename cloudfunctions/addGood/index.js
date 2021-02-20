@@ -6,24 +6,24 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  var form = event.form
-  console.log(form.gd_imgArr)
-  db.collection('goods').add({
-    data: {
-      create_time:form.create_time,
-      gd_address:form.gd_address,
-      gd_contact:form.gd_contact,
-      gd_des:form.gd_des,
-      gd_imgArr:form.gd_imgArr,
-      gd_price:parseFloat(form.gd_price),
-      gd_title:form.gd_title,
-      gd_type:form.gd_type,
-      hits:0,//点击数 初始为0，
-      user_id:form.user_id  
-    }
-  })
-  .then(res => {
-    console.log(res)
-  })
-  .catch(console.error)  
+  // var form = event.form
+  // console.log(form.gd_imgArr)
+  try {
+    return await db.collection('j_goods').add({
+      data: {
+        create_time:form.create_time,
+        address:form.gd_address,
+        contact:form.gd_contact,
+        des:form.gd_des,
+        imgArr:form.gd_imgArr,
+        price:parseFloat(form.gd_price),
+        title:form.gd_title,
+        type:form.gd_type,
+        hits:1,//点击数 初始为0，
+        userInfo:event.userInfo  
+      }
+    });
+  } catch (err) {
+    console.log("err =>".err)  
+  }
 }

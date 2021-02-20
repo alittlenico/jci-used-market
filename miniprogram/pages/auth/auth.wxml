@@ -1,0 +1,3 @@
+<view>
+  <button class="auth-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权认证</button>
+</view>

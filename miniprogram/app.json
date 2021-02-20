@@ -6,7 +6,8 @@
     "pages/msg/msg",
     "pages/mine/mine",
     "pages/login/login",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/auth/auth"
   ],
   "tabBar": {
     "list":[
