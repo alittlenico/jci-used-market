@@ -1,5 +1,8 @@
 {
   "usingComponents": {
-    "van-skeleton": "../../components/vant-weapp/skeleton/index"
+    "van-skeleton": "../../components/vant-weapp/skeleton/index",
+    "van-goods-action": "../../components/vant-weapp/goods-action/index",
+    "van-goods-action-icon": "../../components/vant-weapp/goods-action-icon/index",
+    "van-goods-action-button": "../../components/vant-weapp/goods-action-button/index"
   }
 }

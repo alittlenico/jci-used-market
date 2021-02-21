@@ -285,13 +285,15 @@ Page({
               title:"",
               type:""
           }
-          this.setData({
-            good:this.data.good,
-            imgList:[],
-            release_sucess:false,
-            btn_disabled:false,
-            gdHolder:"必填 请选择商品类别"
-          })
+          setTimeout(res=>{
+            this.setData({
+              good:this.data.good,
+              imgList:[],
+              release_sucess:false,
+              btn_disabled:false,
+              gdHolder:"必填 请选择商品类别"
+            })
+          },2000)
           console.log("res =>",res) 
         },
         fail:err=>{

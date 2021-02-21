@@ -1,7 +1,7 @@
 <view class="conContainer">
   <view class="hdIcon"> 
     <image src="/images/pf_pic1.jpg"style="height:150rpx;border-radius:75rpx;width:150rpx;"/>
-    <view style="margin-left:50rpx;font-size:50rpx;color:#fff">点击登录/注册</view>
+    <view style="margin-left:50rpx;font-size:42rpx;color:#fff">nico</view>
   </view>
   <view>
     <van-grid column-num="3" border="{{ false }}">
@@ -33,7 +33,7 @@
       <view slot="icon" class="icon"><image src="/images/交易.png"/></view>
     </van-cell>
     <van-cell is-link title="我的发布" link-type="navigateTo" url="">
-      <view slot="icon" class="icon"><image src="/images/发布.png"/></view>
+      <view slot="icon" class="icon"><image src="/images/pub.png"/></view>
     </van-cell>
   </view>
   <view style="margin-top:30rpx;">

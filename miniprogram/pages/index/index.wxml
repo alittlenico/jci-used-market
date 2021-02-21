@@ -1,45 +1,67 @@
-<view class="header">
-  <van-search value="{{ value }}" placeholder="请输入搜索关键词" show-action
-  bind:search="onSearch"
-  bind:cancel="onCancel"
-  background="#165dad"
-  input-align="center"
-  shape="round"
-  cancel-class="cancel-class"
-  />
-  <scroll-view scroll-x class="type-tab">
-    <view wx:for="{{topType}}" wx:for-index="i" wx:key="index" data-idx="{{i}}" class="{{activeIdx===i?'active':''}}" bindtap="switchTab">
-      {{item.tyName}}
-    </view>
-  </scroll-view>
-</view>
-<view class="content">  
-  <view class="banner">
-    <swiper indicator-dots="{{swiperOptions.indicatorDots}}" indicator-color="{{swiperOptions.indicatorColor}}" indicator-active-color="{{swiperOptions.indicatorActiveColor}}" autoplay="{{swiperOptions.autoplay}}" interval="{{swiperOptions.interval}}" circular="{{swiperOptions.circular}}">
-    <swiper-item wx:for="{{bannerData}}" wx:key="index"><image src="{{item.imgUrl}}"/></swiper-item>
-    </swiper>
-  </view>
-  <view class="goods">
-    <view class="box" wx:for="{{8}}">
-      <image src="cloud://miniapp-nico-5gfu2agi3ab5e320.6d69-miniapp-nico-5gfu2agi3ab5e320-1304805989/jci-used-market/goods/00a97f23-f616-4318-97c4-44f974b53c92.jpg" mode="widthFix"/>
-      <view class="title">
-        这是标题这是标题这是标题这是标题这是标题
-        这是标题这是标题这是标题这是标题这是标题
+<view>
+  <view class="header">
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" bind:cancel="onCancel"
+      background="#165dad" bind:focus="onFocus" input-align="center" shape="round" cancel-class="cancel-class" />
+    <scroll-view scroll-x class="type-tab">
+      <view wx:for="{{topType}}" wx:for-index="i" wx:key="index" data-idx="{{i}}" class="{{activeIdx===i?'active':''}}"
+        bindtap="switchTab">
+        {{item.tyName}}
       </view>
-      <view class="detail">
-        <view>
-          <image src="cloud://miniapp-nico-5gfu2agi3ab5e320.6d69-miniapp-nico-5gfu2agi3ab5e320-1304805989/jci-used-market/user-icon/user1.jpg"/>
-        <text style="font-size:25rpx;color:#165dad;margin-left:15rpx;position:relative;bottom:15rpx">李建刚</text>
-        </view>
-        <view>
-          <text space="ensp" style="color:#165dad;font-size:24rpx">￥ 188</text>
+    </scroll-view>
+  </view>
+  <view class="content">
+    <view wx:if="{{activeIdx == 0}}">
+      <view class="banner">
+        <swiper indicator-dots="{{swiperOptions.indicatorDots}}" indicator-color="{{swiperOptions.indicatorColor}}"
+          indicator-active-color="{{swiperOptions.indicatorActiveColor}}" autoplay="{{swiperOptions.autoplay}}"
+          interval="{{swiperOptions.interval}}" circular="{{swiperOptions.circular}}">
+          <swiper-item wx:for="{{bannerData}}" wx:key="index">
+            <image src="{{item.imgUrl}}" />
+          </swiper-item>
+        </swiper>
+      </view>
+      <view class="goods">
+        <view class="box" wx:for="{{hotGoods}}" wx:key="index" bindtap="goDetail" data-id="{{item._id}}">
+          <image src="{{item.imgArr[0]}}" mode="widthFix" />
+          <view class="title">
+            {{item.title}}
+          </view>
+          <view class="detail">
+            <view>
+              <image src="{{item.userInfo[0].icon}}" />
+              <text
+                style="font-size:25rpx;color:#165dad;margin-left:15rpx;position:relative;bottom:15rpx">{{item.userInfo[0].nickname}}</text>
+            </view>
+            <view>
+              <text space="ensp" style="color:#165dad;font-size:24rpx">￥ {{item.price}}</text>
+            </view>
+          </view>
         </view>
       </view>
     </view>
+    <view wx:else>
+      <view class="goods">
+        <view class="box" wx:for="{{comGoods}}" wx:key="index" bindtap="goDetail" data-id="{{item._id}}">
+          <image src="{{item.imgArr[0]}}" mode="widthFix" />
+          <view class="title">
+            {{item.title}}
+          </view>
+          <view class="detail">
+            <view>
+              <image src="{{item.userInfo[0].icon}}" />
+              <text
+                style="font-size:25rpx;color:#165dad;margin-left:15rpx;position:relative;bottom:15rpx">{{item.userInfo[0].nickname}}</text>
+            </view>
+            <view>
+              <text space="ensp" style="color:#165dad;font-size:24rpx">￥ {{item.price}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
   </view>
-  
+  <view class="backTopBtn" bindtap="backTop">
+    <image src="../../images/backTop.png" style="height:100rpx;width:100rpx;"></image>
+  </view>
 </view>
-
-
-  
-

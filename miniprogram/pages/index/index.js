@@ -54,12 +54,29 @@ Page({
   onSearch(e){
     console.log("value =>",e.detail)
   },
-  onReachBottom(){
+  onFocus(){
+    wx.navigateTo({
+      url: '../search/search',
+    })
+  },
+  goDetail(e){
+    console.log("goDetail e==>",e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../goods/goods?id='+e.currentTarget.dataset.id,
+    })
+  },
+  backTop(){
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300
+    })
+  },
+  onReachBottom:function(e){
     console.log("触底")
     if(this.data.activeIdx==0){//推荐被选中 加载hotGoods
       this.getHotGoods(8,this.data.hotGoods.length)
     }else{//其他tab被选中 加载comGoods
-      this.getGoodsByType()
+      this.getGoodsByType(this.data.topType[this.data.activeIdx].tyName,this.data.comGoods.length,8)
     }
   },
   getHotGoods(num=8,page=0){
@@ -73,13 +90,14 @@ Page({
         page:page
       },
       success:res=>{
+        console.log("res =>",res)
         wx.hideLoading()
         var oldData = this.data.hotGoods
         var newData = [...oldData,...res.result.list]
-        console.log(this.data.hotGoods)
         this.setData({
             hotGoods:newData
         })
+        console.log(this.data.hotGoods)
       },
       fail:err=>{
         wx.hideLoading()
@@ -101,8 +119,10 @@ Page({
       success:res=>{
         wx.hideLoading()
         console.log("res =>",res)
+        var oldData = this.data.comGoods
+        var newData = [...oldData,...res.result.data]
         this.setData({
-          comGoods:res.result.data
+            comGoods:newData
         })
       },
       fail:err=>{
@@ -141,7 +161,7 @@ Page({
     if(gd_type.length==0){
       this.getHotGoods()
     }else{
-      this.getGoodsByType(gd_type)
+      this.getGoodsByType(gd_type,0,8)
     }
     
   }

@@ -1,3 +1,6 @@
+page{
+  height: 100%
+}
 /* header */
 
 /* 搜索框取消按钮 */
@@ -26,9 +29,10 @@
 .type-tab view.active{
   border-bottom: 1px solid #165dad;
 }
+/* height: calc(100% - 182rpx);
+  position: fixed;overflow-y: auto; */
 .content{
-  width: 100%;height: calc(100% - 182rpx);
-  position: fixed;overflow-y: auto;
+  width: 100%;
 }
 
 
@@ -63,6 +67,10 @@
 }
 .box .detail image{
   width: 50rpx;height: 100%;border-radius: 50rpx;
+}
+
+.backTopBtn{
+  width: 100rpx;height: 100rpx;position: fixed;top: 400rpx;
 }
 
 

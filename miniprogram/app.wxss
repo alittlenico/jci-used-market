@@ -9,5 +9,25 @@
   box-sizing: border-box;
 } 
 
+/* coffee */
+.auto-img{
+  width: 100%;
+  display: block;
+}
+
+.fl{
+  float: left;
+}
+
+.fr{
+  float: right;
+}
+
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
 @import "/colorui/icon.wxss";
 @import "/colorui/main.wxss";

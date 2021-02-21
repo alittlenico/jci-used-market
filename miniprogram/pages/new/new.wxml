@@ -1,0 +1,67 @@
+<view class="new">
+
+  <view class="new-box">
+  
+    <view class="new-item clearfix">
+      <view class="fl text">联系人</view>
+      <view class="fl ipt">
+         <input class="weui-input" placeholder="您的称呼" value="{{addressData.user}}" bindchange="modifyUser" />
+      </view>
+    </view>
+
+     <view class="new-item clearfix">
+      <view class="fl text">性别</view>
+      <view class="fl ipt">
+         <view class="fl clearfix radio-item" wx:for="{{addressData.sex}}" wx:key="index" data-index="{{index}}" data-select="{{item.isSelect}}" bindtap="toggleSex">
+            <view class="fl radio">
+              <image class="auto-img" hidden="{{!item.isSelect}}" src="../../images/check.png" mode="widthFix"></image>
+            </view>
+            <view class="fl radio-text">{{item.title}}</view>
+         </view>
+      </view>
+    </view>
+
+    <view class="new-item clearfix">
+      <view class="fl text">手机号</view>
+      <view class="fl ipt">
+         <input class="weui-input" placeholder="请输入您的手机号" value="{{addressData.phone}}" bindchange="modifyPhone" maxlength="11" />
+      </view>
+    </view>
+
+     <view class="new-item clearfix">
+      <view class="fl text">地址</view>
+      <view class="fl ipt">
+         <picker class="picker-box" mode="region" bindchange="modifyAddress">
+            <view class="picker">{{addressData.address}}</view>
+          </picker>
+      </view>
+    </view>
+
+    <view class="new-item clearfix">
+      <view class="fl text">门牌号</view>
+      <view class="fl ipt">
+         <input class="weui-input" placeholder="如：5楼502房" value="{{addressData.detail}}" bindchange="modifyDetail" maxlength="30" />
+      </view>
+    </view>
+
+    <view class="new-item clearfix">
+      <view class="fl text">标签</view>
+      <view class="fl ipt clearfix">
+         <view class="fl tag {{item.isSelect ? 'active': ''}}" wx:for="{{addressData.tag}}" wx:key="index" data-index="{{index}}" data-select="{{item.isSelect}}" bindtap="toggleTag">{{item.title}}</view>
+      </view>
+    </view>
+
+    <view class="new-item clearfix">
+      <view class="fl">
+        <view class="check-box" bindtap="toggleDefault">
+          <image class="auto-img" hidden="{{addressData.default == 0}}" src="../../images/check.png" mode="widthFix"></image>
+        </view>
+      </view>
+      <view class="fl ipt default-text">设为默认地址</view>
+    </view>
+  
+  </view>
+
+  <view class="save" bindtap="save">保存</view>
+  
+</view>

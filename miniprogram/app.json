@@ -7,7 +7,11 @@
     "pages/mine/mine",
     "pages/login/login",
     "pages/logs/logs",
-    "pages/auth/auth"
+    "pages/auth/auth",
+    "pages/search/search",
+    "pages/address/address",
+    "pages/new/new",
+    "pages/test/test"
   ],
   "tabBar": {
     "list":[

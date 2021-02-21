@@ -1,10 +1,11 @@
-<van-skeleton title avatar row="3" loading="{{isLoadData }}">
-  <view class="conContainer">
+<view class="conContainer">
   <view class="info">
-    <image src="{{userIcon}}" mode="heightFix"/>
+    <image
+      src="{{userIcon}}"
+      mode="heightFix" />
     <view class="txt">
       <view>{{nickname}}</view>
-      <view style="font-size:18rpx;color:rgb(151, 139, 139)">{{createTime}}发布</view>
+      <view style="font-size:18rpx;color:rgb(151, 139, 139)">{{createTime}} 发布</view>
     </view>
   </view>
   <view class="detail">
@@ -13,17 +14,27 @@
     <view>交易地址:{{address}}</view>
     <view>{{title}}</view>
     <view>{{des}}</view>
-    <image wx:for="{{imgArr}}" src="{{item}}" mode="widthFix"/>
-    <view class="liulan">浏览{{hits}}</view>
-  </view>
-  <view class="buyBottom">
-    <view class="bbLeft"> 
-      <image src="/images/collect.png" mode="heightFix"/>
-      <viwe>收藏</viwe>
+    <view style="margin-top:20rpx;">
+      <image wx:for="{{imgList}}" src="{{item}}" wx:key="index" style="border-radius:20rpx;"/>
     </view>
-    <view class="bbRight">
-    <button type="primary">购买</button></view>
+    
+    <view class="liulan;">浏览{{hits}}</view>
   </view>
-</view> 
-</van-skeleton>
 
+</view>
+<!-- 顶部按钮 -->
+<view class="btns">
+  <view class="left-btns">
+    <view class="collect-btn">
+      <image src="../../images/collect.png" style="height:60rpx;" mode="heightFix" />
+      <text>收藏</text>
+    </view>
+    <view class="collect-btn">
+      <image src="../../images/msg.png" style="height:60rpx;" mode="heightFix" />
+      <text>卖家</text>
+    </view>
+  </view>
+  <view class="right-btn">
+    购买
+  </view>
+</view>

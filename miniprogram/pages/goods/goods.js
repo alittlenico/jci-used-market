@@ -1,4 +1,5 @@
 // pages/goods/goods.js
+// bug 存在 imgList换为imgArr渲染不出
 Page({
 
   /**
@@ -13,7 +14,10 @@ Page({
     address:"",
     title:"",
     des:"",
-    imgArr:[],
+    imgList:[
+      "cloud://miniapp-nico-5gfu2agi3ab5e320.6d69-miniapp-nico-5gfu2agi3ab5e320-1304805989/jci-used-market/goods/00a97f23-f616-4318-97c4-44f974b53c92.jpg",
+      "cloud://miniapp-nico-5gfu2agi3ab5e320.6d69-miniapp-nico-5gfu2agi3ab5e320-1304805989/jci-used-market/goods/00e310bd-03e6-4739-ab35-3a3bbf7e3b92.jpg"
+    ],
     hits:null,
     isLoadData:true
   },
@@ -22,33 +26,45 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.gdId)
+    console.log(options.id)
+    // 点击数加1
     wx.cloud.callFunction({
-      name:"getGoodDetailsById",
+      name:"j_updateGoodHits",
       data:{
-        gdId:options.gdId
+        id:options.id   
+      },
+      success:res=>{
+        console.log(res)
+      },
+      fail:err=>{
+        console.log(err)
       }
-    }).then(res=>{
-      console.log(res.result.list[0])
-      var goodInfo = res.result.list[0]
-      this.setData({
-        userIcon:goodInfo.userInfo[0].user_icon,
-        nickname:goodInfo.userInfo[0].user_nickname,
-        createTime:goodInfo.create_time,
-        price:goodInfo.gd_price,
-        contact:goodInfo.gd_contact,
-        address:goodInfo.gd_address,
-        title:goodInfo.gd_title,
-        des:goodInfo.gd_des,
-        imgArr:goodInfo.gd_imgArr,
-        hits:goodInfo.hits
-      })
-      
-      setTimeout(()=>{
-        this.setData({
-          isLoadData:false
+    })
+    var that = this
+    wx.cloud.callFunction({
+      name:"j_getGoodDetailsById",
+      data:{
+        gdId:options.id
+      },
+      success:res=>{
+        console.log(res.result.list[0])
+        var info = (res.result.list[0])
+        that.setData({
+          userIcon:info.userInfo[0].icon,
+          nickname:info.userInfo[0].nickname,
+          createTime:info.create_time,
+          price:info.price,
+          contact:info.contact,
+          address:info.address,
+          title:info.title,
+          des:info.des,
+          imgList:info.imgArr,
+          hits:info.hits
         })
-      },1000)
+      },
+      fail:err=>{
+        console.log(err)
+      }
     })
   },
 
