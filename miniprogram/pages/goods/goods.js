@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isLike:false,
     userIcon:"",
     nickname:"",
     createTime:"",
@@ -19,7 +20,8 @@ Page({
       "cloud://miniapp-nico-5gfu2agi3ab5e320.6d69-miniapp-nico-5gfu2agi3ab5e320-1304805989/jci-used-market/goods/00e310bd-03e6-4739-ab35-3a3bbf7e3b92.jpg"
     ],
     hits:null,
-    isLoadData:true
+    isLoadData:true,
+    gdId:""
   },
 
   /**
@@ -27,6 +29,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.id)
+    this.setData({
+      gdId:options.id
+    })
     // 点击数加1
     wx.cloud.callFunction({
       name:"j_updateGoodHits",
@@ -68,6 +73,107 @@ Page({
     })
   },
 
+  buy(e){
+    console.log(e)
+    console.log("this.data.gdId =>",this.data.gdId)
+    wx.navigateTo({
+      url: '../commit/commit?id='+this.data.gdId
+    })
+  },
+  //收藏或者取消收藏商品
+  likeGood: function (e) {
+
+    //如果没有授权的，则跳到授权认证页面
+    // if (!app.globalData.isAuth) {
+    //   wx.navigateTo({
+    //     url: '../auth/auth'
+    //   })
+    //   return;
+    // }
+
+    //加载提示
+    wx.showLoading({
+      title: '加载中...'
+    })
+
+    if (!this.data.isLike) {
+      //收藏商品
+      wx.cloud.callFunction({
+        name: 'j_likeGood',
+        data: {
+          //商品id
+          id: e.currentTarget.dataset.id
+        },
+        success: res => {
+          //关闭加载提示
+          wx.hideLoading();
+          console.log('res ==> ', res);
+          this.setData({
+            isLike: true
+          })
+        },
+        fail: err => {
+          //关闭加载提示
+          wx.hideLoading();
+          console.log('出错了 err ==> ', err);
+        }
+      })
+    } else {
+      
+      //取消收藏商品
+      wx.cloud.callFunction({
+        name: 'j_removeGood',
+        data: {
+          id: e.currentTarget.dataset.id
+        },
+        success: res => {
+          //关闭加载提示
+          wx.hideLoading();
+          console.log('res ==> ', res);
+          this.setData({
+            isLike: false
+          })
+        },
+        fail: err => {
+          //关闭加载提示
+          wx.hideLoading();
+          console.log('出错了 err ==> ', err);
+        }
+      })
+    }
+  },
+
+  //获取收藏商品
+  getLikeGood: function (id) {
+    //加载提示
+    wx.showLoading({
+      title: '加载中...'
+    })
+
+    wx.cloud.callFunction({
+      name: 'j_getLikeGood',
+      data: {
+        id: id
+      },
+      success: res => {
+        //关闭加载提示
+        wx.hideLoading();
+        // console.log('res ==> ', res);
+
+        //如果存在数据，则表明当前商品已经被收藏过
+        this.setData({
+          isLike: res.result.data.length > 0
+        })
+
+      },
+
+      fail: err => {
+        //关闭加载提示
+        wx.hideLoading();
+        console.log('出错了 err ==> ', err);
+      }
+    })
+  },  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

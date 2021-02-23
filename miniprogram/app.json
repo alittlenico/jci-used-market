@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/auth/auth",
     "pages/index/index",
     "pages/release/release",
     "pages/goods/goods",
@@ -7,11 +8,11 @@
     "pages/mine/mine",
     "pages/login/login",
     "pages/logs/logs",
-    "pages/auth/auth",
     "pages/search/search",
     "pages/address/address",
     "pages/new/new",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/commit/commit"
   ],
   "tabBar": {
     "list":[

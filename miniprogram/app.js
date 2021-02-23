@@ -47,8 +47,10 @@ App({
     // })
   ,
   globalData: {
-    userInfo: null,
-    userID:null,
-    hotGoods:null
+    user:{
+      userInfo:null,
+      icon:"",
+      nickname:""
+    }
   }
 })

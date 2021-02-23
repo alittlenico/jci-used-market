@@ -48,8 +48,17 @@ Page({
     }
   },
   onLoad: function (options) {
-    // console.log("userID:"+app.globalData.userID)
+    // 如果没有授权的，则跳到授权认证页面
+    
+    console.log("userID:"+app.globalData.userID)
     this.getHotGoods()
+    if (!app.globalData.isAuth) {
+      wx.navigateTo({
+        url: '../auth/auth'
+      })
+      return;
+    }
+    console.log("user =>",app.globalData.user)
   },
   onSearch(e){
     console.log("value =>",e.detail)

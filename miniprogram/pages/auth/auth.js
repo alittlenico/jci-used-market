@@ -20,13 +20,58 @@ Page({
 
   //获取用户授权信息
   getUserInfo: function (res) {
-    console.log('res ==> ', res);
-
+    console.log('res ==> ', res.detail.userInfo);
+    var icon = res.detail.userInfo.avatarUrl
+    var nickname = res.detail.userInfo.nickName
+    var userInfo = null
     //已经授权
     if (res.detail && res.detail.userInfo) {
+      // console.log("res.detail.userInfo =>",res.detail.userInfo)
       // console.log('app.globalData ==> ', app.globalData);
-      app.globalData.isAuth = true;
+      // 返回userInfo
+      wx.cloud.callFunction({
+        name:"login",
+        success:res=>{
+          console.log(res.result.event.userInfo)
+          userInfo = res.result.event.userInfo
+          wx.cloud.callFunction({
+            name:"j_getUserByUserInfo",
+            data:{
+              userInfo:userInfo
+            },
+            success:res=>{
+              console.log("res =>",res)
+              var user = {
+                icon:icon,
+                nickname:nickname,
+                userInfo:userInfo
+              }
+              if(res.result.data.length==0){//数据库中没有此用户,添加用户
+                wx.cloud.callFunction({
+                  name:"j_addUser",
+                  data:{
+                    user:user
+                  },
+                  success:res=>{
+                    console.log("res =>",res)
+                  }
+                })
+              }
+              app.globalData.isAuth = true;
+              app.globalData.user=user
+
+            }
+          })
+        }
+      })
+      
+      // 根据userInfo到j_user中查询，若没有用户，则添加用户(icon nickname userInfo)
+      //在app.globalData设置当前用户的信息
+      
     } else {
+      wx.showToast({
+        title: '没有授权',
+      })
       app.globalData.isAuth = false;
     }
   }

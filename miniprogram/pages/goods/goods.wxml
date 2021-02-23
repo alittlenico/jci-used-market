@@ -25,8 +25,8 @@
 <!-- 顶部按钮 -->
 <view class="btns">
   <view class="left-btns">
-    <view class="collect-btn">
-      <image src="../../images/collect.png" style="height:60rpx;" mode="heightFix" />
+    <view class="collect-btn" bindtap="likeGood">
+      <image src="../../images/{{isLike ? 'collect_s' : 'collect'}}.png" style="height:60rpx;" mode="heightFix"/>
       <text>收藏</text>
     </view>
     <view class="collect-btn">
@@ -34,7 +34,7 @@
       <text>卖家</text>
     </view>
   </view>
-  <view class="right-btn">
+  <view class="right-btn" bindtap="buy">
     购买
   </view>
 </view>

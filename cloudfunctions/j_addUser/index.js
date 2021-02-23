@@ -5,5 +5,12 @@ cloud.init()
 const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
-  return event
+  console.log("event =>",event)
+  try {
+    return await db.collection("j_user").add({
+      data:event.user
+    })  
+  } catch (err) {
+    
+  }
 }

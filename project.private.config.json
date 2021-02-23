@@ -57,6 +57,18 @@
         {
           "name": "pages/test/test",
           "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "授权",
+          "pathName": "pages/auth/auth",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "提交订单",
+          "pathName": "pages/commit/commit",
           "scene": null
         }
       ]

@@ -5,5 +5,9 @@ cloud.init()
 const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
-  return event
+  try {
+    return await db.collection("j_like").where(event).get()  
+  } catch (error) {
+    console.log("error =>",error)
+  }
 }
