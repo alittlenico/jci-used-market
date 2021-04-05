@@ -101,6 +101,12 @@
           "pathName": "pages/test/test",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "收藏页面",
+          "pathName": "pages/favorite/favorite",
+          "query": "",
+          "scene": null
         }
       ]
     }

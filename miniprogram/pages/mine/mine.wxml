@@ -5,7 +5,8 @@
   </view>
   <view>
     <van-grid column-num="3" border="{{ false }}">
-      <van-grid-item use-slot  wx:for-item="index">
+      <van-grid-item use-slot  wx:for-item="index" link-type="reLaunch"
+        url="../order/order">
         <image
           style="width:50rpx;height:50rpx;"
           src="/images/subscribe.png"/>

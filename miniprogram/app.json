@@ -13,7 +13,8 @@
     "pages/new/new",
     "pages/test/test",
     "pages/commit/commit",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/favorite/favorite"
   ],
   "tabBar": {
     "list":[

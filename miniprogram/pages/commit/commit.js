@@ -163,7 +163,7 @@ Page({
       success: res => {
         wx.hideLoading();
         // console.log('写入订单数据 res ==> ', res);
-        wx.navigateTo({
+        wx.switchTab({
           url: '../order/order',
         })
       },

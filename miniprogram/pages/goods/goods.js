@@ -35,6 +35,8 @@ Page({
     this.setData({
       gdId:options.id
     })
+    //检查是否收藏
+
     // 点击数加1
     wx.cloud.callFunction({
       name:"j_updateGoodHits",
@@ -106,7 +108,7 @@ Page({
         name: 'j_likeGood',
         data: {
           //商品id
-          id: e.currentTarget.dataset.id
+          id: this.data.gdId
         },
         success: res => {
           //关闭加载提示

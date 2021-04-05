@@ -23,7 +23,12 @@ Page({
       keyWord: e.detail,
     });
   },
-
+  goDetail(e){
+    console.log("goDetail e==>",e.currentTarget.dataset.id)
+    wx.navigateTo({
+      url: '../goods/goods?id='+e.currentTarget.dataset.id,
+    })
+  },
   onClick:function(e){
     wx.showLoading({
       title: '加载中...',

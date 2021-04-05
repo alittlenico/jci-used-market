@@ -5,7 +5,8 @@ cloud.init()
 const db = cloud.database()
 
 // 云函数入口函数
-exports.main = async (event, context) => {  
+exports.main = async (event, context) => {
+  console.log("event ==>",event)  
   try {
     return await db.collection("j_like").add({
       data:event

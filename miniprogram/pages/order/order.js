@@ -18,33 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.cloud.callFunction({
-      name: "j_getOrderByUserInfo",
-      data:this.data.userInfo,
-      success: res => {
-        wx.hideLoading()
-        console.log("res ==>",res)
-        // 按订单时间排序 优先显示最近时间的
-        // res.result.list.sort(function(a,b){
-        //   var t1 = new Date(a.orderDate).getTime();
-        //   var t2 = new Date(b.orderDate).getTime();
-        //   if(t1<t2){
-        //     return 1
-        //   }else if(t1==t2){
-        //     return 0
-        //   }else{
-        //     return -1
-        //   }
-        // })
-        // this.setData({
-        //   orderData:res.result.list
-        // })
-      },
-      fail: err => {
-        wx.hideLoading()
-        console.log('出错了 err ==> ', err);
-      }
-    })  
+    
   },
 
   /**
@@ -64,21 +38,21 @@ Page({
       success: res => {
         wx.hideLoading()
         console.log("res ==>",res)
-        // 按订单时间排序 优先显示最近时间的
-        // res.result.list.sort(function(a,b){
-        //   var t1 = new Date(a.orderDate).getTime();
-        //   var t2 = new Date(b.orderDate).getTime();
-        //   if(t1<t2){
-        //     return 1
-        //   }else if(t1==t2){
-        //     return 0
-        //   }else{
-        //     return -1
-        //   }
-        // })
-        // this.setData({
-        //   orderData:res.result.list
-        // })
+        //按订单时间排序 优先显示最近时间的
+        res.result.list.sort(function(a,b){
+          var t1 = new Date(a.orderDate).getTime();
+          var t2 = new Date(b.orderDate).getTime();
+          if(t1<t2){
+            return 1
+          }else if(t1==t2){
+            return 0
+          }else{
+            return -1
+          }
+        })
+        this.setData({
+          orderData:res.result.list
+        })
       },
       fail: err => {
         wx.hideLoading()
