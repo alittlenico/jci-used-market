@@ -1,0 +1,31 @@
+<view class="order">
+  <view class="order-item" wx:for="{{orderData}}">
+    <view class="item">
+      <view>{{item.id}}</view>
+      <view>已完成</view>
+    </view>
+    <view class="item-2">
+      <!-- 右箭头代表 左边向右边购买 展示某个用户的订单时 左边显示当前用户 -->
+      <image
+        src="{{item.buyer[0].icon}}"
+        mode="widthFix"></image>
+      <image src="../../images/r.png" mode="widthFix" style="margin:0rpx 30rpx"></image>
+      <image
+        src="{{item.seller[0].icon}}"
+        mode="widthFix"></image>
+    </view>
+    <view class="item-3">
+      <view class="item-img">
+        <image style="width:120rpx;" mode="widthFix" src="{{item.goodDetail[0].imgArr[0]}}">
+        </image>
+      </view>
+      <view class="item-3-title">{{item.title}}</view>
+      <view class="item-price">￥ {{item.goodDetail[0].price}}</view>
+      <view style="padding-top:30rpx">x 1</view>
+    </view>
+    <view class="item-4">
+      <view>{{item.orderDate}}</view>
+      <view>￥ {{item.goodDetail[0].price}}</view>
+    </view>
+  </view>
+</view>

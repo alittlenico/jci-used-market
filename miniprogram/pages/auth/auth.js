@@ -19,8 +19,8 @@ Page({
   },
 
   //获取用户授权信息
-  getUserInfo: function (res) {
-    console.log('res ==> ', res.detail.userInfo);
+  getUserInfo: function (res) { 
+    console.log('res ==> ', res);
     var icon = res.detail.userInfo.avatarUrl
     var nickname = res.detail.userInfo.nickName
     var userInfo = null
@@ -29,19 +29,19 @@ Page({
       // console.log("res.detail.userInfo =>",res.detail.userInfo)
       // console.log('app.globalData ==> ', app.globalData);
       // 返回userInfo
-      wx.cloud.callFunction({
+      wx.cloud.callFunction({//调用注册函数
         name:"login",
         success:res=>{
           console.log(res.result.event.userInfo)
           userInfo = res.result.event.userInfo
-          wx.cloud.callFunction({
+          wx.cloud.callFunction({//根据userInfo查找云数据库中是否有该用户
             name:"j_getUserByUserInfo",
             data:{
               userInfo:userInfo
             },
             success:res=>{
               console.log("res =>",res)
-              var user = {
+              var user = {//构造用户对象
                 icon:icon,
                 nickname:nickname,
                 userInfo:userInfo
@@ -59,7 +59,10 @@ Page({
               }
               app.globalData.isAuth = true;
               app.globalData.user=user
-
+              console.log("-------------------")
+              wx.navigateBack({
+                url: '../index/index'
+              })
             }
           })
         }

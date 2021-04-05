@@ -12,11 +12,13 @@
     "pages/address/address",
     "pages/new/new",
     "pages/test/test",
-    "pages/commit/commit"
+    "pages/commit/commit",
+    "pages/order/order"
   ],
   "tabBar": {
     "list":[
       {"pagePath": "pages/index/index","text": "首页","iconPath": "images/home.png","selectedIconPath": "images/home_s.png"},
+      {"pagePath": "pages/order/order","text": "订单","iconPath": "images/order.png","selectedIconPath": "images/order_s.png"},
       {"pagePath": "pages/release/release","text": "发布","iconPath": "images/pub.png","selectedIconPath": "images/pub_s.png"},
       {"pagePath": "pages/msg/msg","text": "消息","iconPath": "images/msg.png","selectedIconPath": "images/msg_s.png"},
       {"pagePath": "pages/mine/mine","text": "我的","iconPath": "images/my.png","selectedIconPath": "images/my_s.png"}

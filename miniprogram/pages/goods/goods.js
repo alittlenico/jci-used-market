@@ -1,5 +1,7 @@
 // pages/goods/goods.js
 // bug 存在 imgList换为imgArr渲染不出
+
+const app = getApp()
 Page({
 
   /**
@@ -28,6 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("app.globalData ==>",app.globalData)
     console.log(options.id)
     this.setData({
       gdId:options.id
@@ -73,6 +76,7 @@ Page({
     })
   },
 
+  //点击购买
   buy(e){
     console.log(e)
     console.log("this.data.gdId =>",this.data.gdId)

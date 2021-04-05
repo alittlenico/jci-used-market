@@ -22,6 +22,6 @@ exports.main = async (event, context) => {
       }
     })
   } catch (err) {
-    console.log("err =>".err)  
+    console.log("err =>",err)  
   }
 }

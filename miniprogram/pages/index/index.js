@@ -60,6 +60,15 @@ Page({
     }
     console.log("user =>",app.globalData.user)
   },
+  
+  onShow(){
+    if (!app.globalData.isAuth) {
+      wx.navigateTo({
+        url: '../auth/auth'
+      })
+      return;
+    }  
+  },
   onSearch(e){
     console.log("value =>",e.detail)
   },

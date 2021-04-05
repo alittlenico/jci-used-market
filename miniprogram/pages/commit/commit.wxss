@@ -1,3 +1,39 @@
+.item{
+  display: flex;
+  justify-content: space-between;
+  flex-direction:column
+}
+
+.item_1{
+  width: 100%;display: flex;height: 80rpx;
+}
+
+.item_1 image{
+  width: 75rpx;
+  border-radius: 37.5rpx;
+}
+
+
+.item_2{
+  display: flex;
+  justify-content: space-between;
+}
+.item-img,.item-title,item-price{
+  margin-left: 5rpx;
+}
+.item-title{
+  width: 400rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #444;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  align-content: center;
+}
+
 .commit{
   padding-bottom: 100rpx;
 }
@@ -75,9 +111,7 @@
 }
 
 .ch-name{
-  height: 80rpx;
-  font-size: 28rpx;
-  color: #444;
+  
 }
 
 .pro-rule{

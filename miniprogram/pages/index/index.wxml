@@ -21,6 +21,7 @@
         </swiper>
       </view>
       <view class="goods">
+        <!-- 推荐产品 -->
         <view class="box" wx:for="{{hotGoods}}" wx:key="index" bindtap="goDetail" data-id="{{item._id}}">
           <image src="{{item.imgArr[0]}}" mode="widthFix" />
           <view class="title">
@@ -40,6 +41,7 @@
       </view>
     </view>
     <view wx:else>
+      <!-- 其他类别产品 -->
       <view class="goods">
         <view class="box" wx:for="{{comGoods}}" wx:key="index" bindtap="goDetail" data-id="{{item._id}}">
           <image src="{{item.imgArr[0]}}" mode="widthFix" />

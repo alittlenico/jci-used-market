@@ -1,7 +1,7 @@
 <view class="conContainer">
   <view class="hdIcon"> 
-    <image src="/images/pf_pic1.jpg"style="height:150rpx;border-radius:75rpx;width:150rpx;"/>
-    <view style="margin-left:50rpx;font-size:42rpx;color:#fff">nico</view>
+    <image src="{{userData.icon}}"style="height:150rpx;border-radius:75rpx;width:150rpx;"/>
+    <view style="margin-left:50rpx;font-size:42rpx;color:#fff">{{userData.nickname}}</view>
   </view>
   <view>
     <van-grid column-num="3" border="{{ false }}">

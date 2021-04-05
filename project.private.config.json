@@ -69,6 +69,37 @@
         {
           "name": "提交订单",
           "pathName": "pages/commit/commit",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "提交页面",
+          "pathName": "pages/commit/commit",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "订单",
+          "pathName": "pages/order/order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "提交页面",
+          "pathName": "pages/commit/commit",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索",
+          "pathName": "pages/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "测试",
+          "pathName": "pages/test/test",
+          "query": "",
           "scene": null
         }
       ]

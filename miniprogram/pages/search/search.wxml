@@ -1,2 +1,34 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="wraper">
+  <view class="header">
+    <van-search value="{{ keyWord }}" placeholder="请输入搜索关键词" show-action bind:search="onSearch" 
+    bind:change="onChange"
+      background="#165dad"  input-align="center" shape="round" cancel-class="cancel-class"
+      use-action-slot>
+      <view slot="action" bind:tap="onClick">搜索</view>
+    </van-search>
+  </view>
+  <view class="main">
+    <scroll-view class='main-scroll' scroll-y style="height: 100%">
+      <view class="goods">
+        <!-- 推荐产品 -->
+        <view class="box" wx:for="{{searthData}}" wx:key="index" bindtap="goDetail" data-id="{{item._id}}">
+          <image src="{{item.imgArr[0]}}" mode="widthFix" />
+          <view class="title">
+            {{item.title}}
+          </view>
+          <view class="detail">
+            <view>
+              <image src="{{item.userInfo[0].icon}}" />
+              <text
+                style="font-size:25rpx;color:#165dad;margin-left:15rpx;position:relative;bottom:15rpx">{{item.userInfo[0].nickname}}</text>
+            </view>
+            <view>
+              <text space="ensp" style="color:#165dad;font-size:24rpx">￥ {{item.price}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+</view>

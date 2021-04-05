@@ -4,23 +4,26 @@
     <view class="receive" bindtap="toggleAddressList">{{address}}</view>
 
     <view class="pro-list">
-      <view class="product-item clearfix">
-        <view class="fl pro-img">
-          <image class="auto-img" src="{{shopcartData.imgArr[0]}}" mode="widthFix"></image>
+      <view class="item">
+        <view class="item_1">
+          <image src="{{commitData.userInfo[0].icon}}" mode="widthFix"></image>
+          <view style="padding-top:20rpx;margin-left:40rpx">{{commitData.userInfo[0].nickname}}</view>
         </view>
-        <view class="fl pro-name">
-          <view class="ch-name">{{shopcartData.title}}</view>
+        <view class="item_2">
+          <view class="item-img">
+            <image style="width:120rpx;" mode="widthFix" src="{{commitData.imgArr[0]}}">
+            </image>
+          </view>
+          <view class="item-title">{{commitData.title}}</view>
+          <view class="item-price">￥ {{commitData.price}}</view>
+          <view style="padding-top:30rpx">x 1</view>
         </view>
-        <view class="fr">
-          <view class="pro-price">￥{{shopcartData.price}}</view>
-        </view>
+
       </view>
-
-
       <view class="clearfix">
         <view class="fr">
-          <view class="fl count">共 {{count}} 件商品 合计：</view>
-          <view class="fl price">￥{{total}}</view>
+          <view class="fl count">共 1 件商品 合计：</view>
+          <view class="fl price">￥{{commitData.price}}</view>
         </view>
       </view>
     </view>
@@ -34,7 +37,8 @@
 
       <view class="list">
 
-        <view class="address-item" wx:for="{{addressData}}" wx:key="index" data-index="{{index}}" bindtap="selectAddress">
+        <view class="address-item" wx:for="{{addressData}}" wx:key="index" data-index="{{index}}"
+          bindtap="selectAddress">
           <view class="person-info clearfix">
             <view class="fl person-name">{{item.user}}</view>
             <view class="fl person-phone">{{item.phone}}</view>
@@ -59,7 +63,7 @@
   <view class="pay-box">
     <view class="fl clearfix">
       <view class="fl text1">应付合计：</view>
-      <view class="fl text2">￥{{total}}</view>
+      <view class="fl text2">￥{{commitData.price}}</view>
     </view>
     <view class="fr pay-btn" bindtap="commit">立即结算</view>
   </view>
